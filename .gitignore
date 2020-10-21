@@ -184,8 +184,3 @@ nbdist/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
-### maven ###
-mvnw
-mvnw.cmd
-.editorconfig
