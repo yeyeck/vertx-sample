@@ -17,9 +17,10 @@ public class MainVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
+    // 创建一个 router
     Router router = Router.router(vertx);
     router.route().handler(BodyHandler.create());
-
+    // 创建一个http server 并将所有请求交给 router 来管理
     vertx.createHttpServer().requestHandler(router).listen(8888, http -> {
       if (http.succeeded()) {
         startPromise.complete();
@@ -28,6 +29,7 @@ public class MainVerticle extends AbstractVerticle {
         startPromise.fail(http.cause());
       }
     });
+    // 在router上挂载url
     new ArticleRouter().init(router);
     new UserRouter().init(router);
 

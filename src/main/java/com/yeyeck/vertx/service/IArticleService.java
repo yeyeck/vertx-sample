@@ -9,4 +9,5 @@ public interface IArticleService {
   Future<Article> getById(Integer id);
   Future<Integer> update(Integer id, ArticleFo articleFo);
   Future<Integer> deleteById(Integer id);
+  Future<Integer> testTransaction();
 }

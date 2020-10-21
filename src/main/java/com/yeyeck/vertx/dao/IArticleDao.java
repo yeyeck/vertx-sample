@@ -4,7 +4,7 @@ import com.yeyeck.vertx.pojo.Article;
 import io.vertx.core.Future;
 import io.vertx.sqlclient.SqlConnection;
 
-public interface IArticleDap {
+public interface IArticleDao {
   Future<Integer> add(SqlConnection connection, Article article);
   Future<Article> getById(SqlConnection connection, Integer id);
   Future<Integer> update(SqlConnection connection, Article article);

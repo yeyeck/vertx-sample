@@ -1,6 +1,6 @@
 package com.yeyeck.vertx.dao.impl;
 
-import com.yeyeck.vertx.dao.IArticleDap;
+import com.yeyeck.vertx.dao.IArticleDao;
 import com.yeyeck.vertx.pojo.Article;
 import io.vertx.core.Future;
 import io.vertx.core.Promise;
@@ -10,7 +10,7 @@ import io.vertx.sqlclient.RowSet;
 import io.vertx.sqlclient.SqlConnection;
 import io.vertx.sqlclient.Tuple;
 
-public class ArticleDaoImpl implements IArticleDap {
+public class ArticleDaoImpl implements IArticleDao {
 
   @Override
   public Future<Integer> add(SqlConnection connection, Article article) {
@@ -80,4 +80,5 @@ public class ArticleDaoImpl implements IArticleDap {
       });
     return promise.future();
   }
+
 }

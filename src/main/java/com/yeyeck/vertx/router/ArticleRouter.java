@@ -17,6 +17,7 @@ public class ArticleRouter extends BasicRouter{
     router.get("/article/:id").handler(this::get);
     router.put("/article/:id").handler(this::update);
     router.delete("/article/:id").handler(this::deleteArticle);
+    router.get("/article/transaction/").handler(this::transaction);
   }
 
   private void post(RoutingContext routingContext) {
@@ -55,6 +56,14 @@ public class ArticleRouter extends BasicRouter{
      }).onFailure(throwable -> {
      routingContext.response().setStatusCode(500).end(throwable.toString());
    });;
+ }
+
+ private void transaction(RoutingContext routingContext) {
+    articleService.testTransaction().onSuccess(integer -> {
+      routingContext.response().setStatusCode(200).end(String.valueOf(integer));
+    }).onFailure(throwable -> {
+      routingContext.response().setStatusCode(500).end(throwable.toString());
+    });
  }
 
 }
